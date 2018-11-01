@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf147.petstore.mapper.PsUserMapper">
+  <resultMap id="BaseResultMap" type="com.nf147.petstore.entity.PsUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="first_name" jdbcType="VARCHAR" property="first_name" />
+    <result column="last_name" jdbcType="VARCHAR" property="last_name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="user_status" jdbcType="INTEGER" property="user_status" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ps_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByUserName" parameterType="java.lang.String">
+    delete from ps_user
+    where username = #{username,jdbc=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.nf147.petstore.entity.PsUser" useGeneratedKeys="true">
+    insert into ps_user (username, first_name, last_name, 
+      email, password, phone, 
+      user_status)
+    values (#{username,jdbcType=VARCHAR}, #{first_name,jdbcType=VARCHAR}, #{last_name,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{user_status,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.nf147.petstore.entity.PsUser">
+    update ps_user
+    set username = #{username,jdbcType=VARCHAR},
+      first_name = #{first_name,jdbcType=VARCHAR},
+      last_name = #{last_name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      user_status = #{user_status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, first_name, last_name, email, password, phone, user_status
+    from ps_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, first_name, last_name, email, password, phone, user_status
+    from ps_user
+  </select>
+  <select id="login" resultType="com.nf147.petstore.entity.PsUser">
+    select id, username, first_name, last_name, email, password, phone, user_status
+    from ps_user
+    where username=#{username,jdbc=VARCHAR} and password = #{password,jdbc=VARCHAR}
+  </select>
+
+  <select id="selectByName" resultType="com.nf147.petstore.entity.PsUser">
+    select id, username, first_name, last_name, email, password, phone, user_status
+    from ps_user
+    where username=#{username}
+  </select>
+
+</mapper>
