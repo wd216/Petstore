@@ -3,7 +3,8 @@ package com.nf147.petstore.entity;
 public class PsPet {
     private Integer id;
 
-    private Integer category_id;
+    private PsCategory category;
+
 
     private String name;
 
@@ -21,12 +22,12 @@ public class PsPet {
         this.id = id;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
+    public PsCategory getCategory() {
+        return category;
     }
 
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
+    public void setCategory(PsCategory category) {
+        this.category = category;
     }
 
     public String getName() {
@@ -59,5 +60,32 @@ public class PsPet {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public PsPet() {
+    }
+
+    public PsPet(PsCategory category, String name, String photo_urls, Integer tags_id, String status) {
+        this.category = category;
+        this.name = name;
+        this.photo_urls = photo_urls;
+        this.tags_id = tags_id;
+        this.status = status;
+    }
+
+    public PsPet(PsCategory category, String name, Integer tags_id, String status) {
+        this.category = category;
+        this.name = name;
+        this.tags_id = tags_id;
+        this.status = status;
+    }
+
+    public PsPet(Integer id, PsCategory category, String name, String photo_urls, Integer tags_id, String status) {
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.photo_urls = photo_urls;
+        this.tags_id = tags_id;
+        this.status = status;
     }
 }

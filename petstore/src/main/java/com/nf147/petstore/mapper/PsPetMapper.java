@@ -1,6 +1,8 @@
 package com.nf147.petstore.mapper;
 
 import com.nf147.petstore.entity.PsPet;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface PsPetMapper {
@@ -10,7 +12,7 @@ public interface PsPetMapper {
 
     PsPet selectByPrimaryKey(Integer id);
 
-    List<PsPet> selectByStatus(String string);
+    List<PsPet> selectByStatus(@Param("status") String status);
 
     List<PsPet> selectAll();
 

@@ -5,6 +5,7 @@ import com.nf147.petstore.mapper.PsOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.faces.annotation.RequestMap;
 import javax.ws.rs.Path;
@@ -35,5 +36,9 @@ public class StoreController {
         int i = mapper.deleteByPrimaryKey(id);
         return i;
     }
+
+
+
+
 
 }

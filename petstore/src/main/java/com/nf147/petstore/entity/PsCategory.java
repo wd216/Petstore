@@ -1,5 +1,7 @@
 package com.nf147.petstore.entity;
 
+import java.util.List;
+
 public class PsCategory {
     private Integer id;
 
